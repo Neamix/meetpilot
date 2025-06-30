@@ -1,0 +1,17 @@
+@layer components {
+  .text-headline-auth {
+    @apply mb-0 font-bold text-[20px];
+  }
+  
+  .text-subline-auth {
+    @apply text-gray-500 text-sm;
+  }
+
+  .text-label {
+    @apply text-[10px] font-[600]
+  }
+
+  .text-error {
+    @apply text-[12px] text-red-500
+  }
+}

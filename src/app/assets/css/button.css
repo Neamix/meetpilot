@@ -1,0 +1,15 @@
+.pulse-on-click {
+    @apply transition-all duration-200 ease-in-out;
+}
+
+.pulse-on-click:active {
+    @apply animate-pulse;
+}
+
+.pulse-on-click:hover {
+    @apply shadow-lg;
+}
+
+button {
+    @apply cursor-pointer
+}
