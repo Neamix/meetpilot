@@ -4,7 +4,7 @@ import AuthenticationMiddleware from './app/middleware/AuthenticationMiddleware'
 import LocalizationMiddleware from './app/middleware/LocalizationMiddleware';
 
 // Define the middleware type
-type MiddlewareFunction = (request: NextRequest) => Promise<NextResponse | void> | NextResponse | void;
+type MiddlewareFunction = (request: NextRequest) => Promise<NextResponse | void>;
 
 // Register your middleware functions here
 const middlewares: MiddlewareFunction[] = [
