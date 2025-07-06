@@ -1,9 +1,7 @@
-import next from 'next'
 import { NextResponse, NextRequest } from 'next/server'
-import AuthenticationMiddleware from './app/middleware/AuthenticationMiddleware'
-import LocalizationMiddleware from './app/middleware/LocalizationMiddleware';
-import createMiddleware from 'next-intl/middleware';
-import {routing} from './i18n/routing';
+import AuthenticationMiddleware from '@/middleware/AuthenticationMiddleware'
+import LocalizationMiddleware from '@/middleware/LocalizationMiddleware';
+
 // Define the middleware type
 type MiddlewareFunction = (request: NextRequest) => Promise<NextResponse | void>;
 
