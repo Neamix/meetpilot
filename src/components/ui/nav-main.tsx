@@ -1,23 +1,16 @@
 "use client"
 
-import { ChevronRight, type LucideIcon,Hash,Users,CalendarDays,Files    } from "lucide-react"
+import { type LucideIcon,Hash,Users,CalendarDays,Files    } from "lucide-react"
 import { useTranslations } from 'next-intl'
 
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
+import { usePathname } from "next/navigation"
+import Link from "next/link"
 
 export function NavMain({
   items,
@@ -34,30 +27,38 @@ export function NavMain({
   }[]
 }) {
   const t = useTranslations('Sidebar')
-  
+  const pathname = usePathname()
   return (
     <SidebarGroup>
       <SidebarMenu>
         <SidebarMenuButton>
-          <Hash></Hash>
-          <span>Dashboard</span>
+          <Link className="flex items-center gap-1  w-full" href={'/dashboard'}>
+            <Hash width="17px"></Hash>
+            <span className="text-[14px]">Dashboard</span>
+          </Link>
         </SidebarMenuButton>
       </SidebarMenu>
       <SidebarGroupLabel>{t('platform')}</SidebarGroupLabel>
 
       <SidebarMenuButton>
-        <Users></Users>
-        <span>Teams</span>
+        <Link className="flex items-center gap-1 w-full" href={'/dashboard/teams'}>
+          <Users width="17px"></Users>
+          <span className="text-[14px]">Teams</span>
+        </Link>
       </SidebarMenuButton>
 
       <SidebarMenuButton>
-        <Files></Files>
-        <span>Docs</span>
+        <Link className="flex items-center gap-1  w-full" href={'/dashboard/documents'}>
+          <Files width="17px"></Files>
+          <span className="text-[14px]">Docs</span>
+        </Link>
       </SidebarMenuButton>
 
       <SidebarMenuButton>
-        <CalendarDays></CalendarDays>
-        <span>Calenders</span>
+        <Link className="flex items-center gap-1  w-full" href={'/dashboard/calender'}>
+          <CalendarDays width="17px"></CalendarDays>
+          <span className="text-[14px]">Calender</span>
+        </Link>
       </SidebarMenuButton>
       
     </SidebarGroup>
