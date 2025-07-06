@@ -2,5 +2,60 @@
   "HomePage": {
     "title": "مرحبا ايها العالم",
     "about": "Go to the about page"
+  },
+  "Dashboard": {
+    "header": {
+      "toggleSidebar": "تبديل الشريط الجانبي",
+      "toggleRTL": "تبديل الاتجاه",
+      "openMenu": "فتح القائمة"
+    }
+  },
+  "Sidebar": {
+    "platform": "المنصة",
+    "projectsLabel": "المشاريع",
+    "navigation": {
+      "playground": "بيئة التجربة",
+      "models": "النماذج",
+      "documentation": "التوثيق",
+      "settings": "الإعدادات"
+    },
+    "subItems": {
+      "history": "التاريخ",
+      "starred": "المفضلة",
+      "settings": "الإعدادات",
+      "genesis": "جينيسيس",
+      "explorer": "المستكشف",
+      "quantum": "الكم",
+      "introduction": "المقدمة",
+      "getStarted": "البدء",
+      "tutorials": "الدروس",
+      "changelog": "سجل التغييرات",
+      "general": "عام",
+      "team": "الفريق",
+      "billing": "الفواتير",
+      "limits": "الحدود"
+    },
+    "user": {
+      "account": "الحساب",
+      "billing": "الفواتير",
+      "notifications": "الإشعارات",
+      "logout": "تسجيل الخروج",
+      "upgradeToPro": "الترقية إلى برو"
+    },
+    "projects": {
+      "viewProject": "عرض المشروع",
+      "shareProject": "مشاركة المشروع",
+      "deleteProject": "حذف المشروع",
+      "more": "المزيد"
+    },
+    "teams": {
+      "addTeam": "إضافة فريق"
+    }
+  },
+  "Common": {
+    "rtl": "العربية",
+    "ltr": "الإنجليزية",
+    "toggleDirection": "تبديل اتجاه النص",
+    "more": "المزيد"
   }
 }

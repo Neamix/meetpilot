@@ -2,5 +2,60 @@
   "HomePage": {
     "title": "Hello world!",
     "about": "Go to the about page"
+  },
+  "Dashboard": {
+    "header": {
+      "toggleSidebar": "Toggle Sidebar",
+      "toggleRTL": "Toggle RTL",
+      "openMenu": "Open menu"
+    }
+  },
+  "Sidebar": {
+    "platform": "Platform",
+    "projectsLabel": "Projects",
+    "navigation": {
+      "playground": "Playground",
+      "models": "Models",
+      "documentation": "Documentation",
+      "settings": "Settings"
+    },
+    "subItems": {
+      "history": "History",
+      "starred": "Starred",
+      "settings": "Settings",
+      "genesis": "Genesis",
+      "explorer": "Explorer",
+      "quantum": "Quantum",
+      "introduction": "Introduction",
+      "getStarted": "Get Started",
+      "tutorials": "Tutorials",
+      "changelog": "Changelog",
+      "general": "General",
+      "team": "Team",
+      "billing": "Billing",
+      "limits": "Limits"
+    },
+    "user": {
+      "account": "Account",
+      "billing": "Billing",
+      "notifications": "Notifications",
+      "logout": "Log out",
+      "upgradeToPro": "Upgrade to Pro"
+    },
+    "projects": {
+      "viewProject": "View Project",
+      "shareProject": "Share Project",
+      "deleteProject": "Delete Project",
+      "more": "More"
+    },
+    "teams": {
+      "addTeam": "Add team"
+    }
+  },
+  "Common": {
+    "rtl": "RTL",
+    "ltr": "LTR",
+    "toggleDirection": "Toggle Text Direction",
+    "more": "More"
   }
 }

@@ -3,8 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { Languages } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTranslations } from 'next-intl';
 
 export function RTLToggle() {
+  const t = useTranslations('Common');
   const [isRTL, setIsRTL] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -44,9 +46,11 @@ export function RTLToggle() {
         size="sm"
         className="gap-2"
         disabled
+        aria-label={t('toggleDirection')}
+        title={t('toggleDirection')}
       >
         <Languages className="h-4 w-4" />
-        RTL
+        {t('rtl')}
       </Button>
     );
   }
@@ -57,9 +61,11 @@ export function RTLToggle() {
       size="sm"
       onClick={toggleRTL}
       className="gap-2"
+      aria-label={t('toggleDirection')}
+      title={t('toggleDirection')}
     >
       <Languages className="h-4 w-4" />
-      {isRTL ? "LTR" : "RTL"}
+      {isRTL ? t('ltr') : t('rtl')}
     </Button>
   );
 }

@@ -8,6 +8,7 @@ import {
   LogOut,
   Sparkles,
 } from "lucide-react"
+import { useTranslations } from 'next-intl'
 
 import {
   Avatar,
@@ -40,6 +41,7 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
+  const t = useTranslations('Sidebar.user')
 
   return (
     <SidebarMenu>
@@ -83,28 +85,28 @@ export function NavUser({
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <Sparkles />
-                Upgrade to Pro
+                {t('upgradeToPro')}
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <BadgeCheck />
-                Account
+                {t('account')}
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <CreditCard />
-                Billing
+                {t('billing')}
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Bell />
-                Notifications
+                {t('notifications')}
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <LogOut />
-              Log out
+              {t('logout')}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

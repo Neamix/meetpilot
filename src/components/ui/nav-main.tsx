@@ -1,6 +1,7 @@
 "use client"
 
 import { ChevronRight, type LucideIcon } from "lucide-react"
+import { useTranslations } from 'next-intl'
 
 import {
   Collapsible,
@@ -32,9 +33,11 @@ export function NavMain({
     }[]
   }[]
 }) {
+  const t = useTranslations('Sidebar')
+  
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel>{t('platform')}</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
