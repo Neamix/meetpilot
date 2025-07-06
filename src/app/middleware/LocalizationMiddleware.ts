@@ -1,18 +1,10 @@
 import { cookies } from "next/headers";
 import { NextRequest } from "next/server";
 
-// Constants for better performance - avoid recreating on each request
-const STATIC_PATHS = ['/favicon.ico', '/.well-known', '/avatars/shadcn.jpg', '/_next'];
+import { routing } from '@/i18n/routing';
+import createMiddleware from 'next-intl/middleware';
 
-export default async function (request: NextRequest) {
-    const pathname = request.nextUrl.pathname;
-    
-    if (STATIC_PATHS.some(path => pathname.startsWith(path))) {
-        return;
-    }
-
-    const cookiesStore = await cookies();
-    const language = cookiesStore.get('language') ?? 'en';
-    
-    
+export default async function LocalizationMiddleware(request: NextRequest) {
+    const intlMiddleware = createMiddleware(routing);
+    return intlMiddleware(request);
 }
