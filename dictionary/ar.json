@@ -13,12 +13,6 @@
   "Sidebar": {
     "platform": "المنصة",
     "projectsLabel": "المشاريع",
-    "navigation": {
-      "playground": "بيئة التجربة",
-      "models": "النماذج",
-      "documentation": "التوثيق",
-      "settings": "الإعدادات"
-    },
     "subItems": {
       "history": "التاريخ",
       "starred": "المفضلة",

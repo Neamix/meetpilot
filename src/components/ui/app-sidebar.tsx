@@ -5,9 +5,11 @@ import Image from "next/image"
 import {
   AudioWaveform,
   BookOpen,
-  Bot,
+  ChartNoAxesColumnIncreasing ,
   Command,
   Frame,
+  Bot,
+  Handshake,
   GalleryVerticalEnd,
   Map,
   PieChart,
@@ -26,10 +28,12 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  useSidebar,
 } from "@/components/ui/sidebar"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const t = useTranslations('Sidebar')
+  const { state } = useSidebar()
   
   // Generate data with translations
   const data = {
@@ -38,28 +42,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       email: "m@example.com",
       avatar: "/avatars/shadcn.jpg",
     },
-    teams: [
-      {
-        name: "Acme Inc",
-        logo: GalleryVerticalEnd,
-        plan: "Enterprise",
-      },
-      {
-        name: "Acme Corp.",
-        logo: AudioWaveform,
-        plan: "Startup",
-      },
-      {
-        name: "Evil Corp.",
-        logo: Command,
-        plan: "Free",
-      },
-    ],
     navMain: [
       {
         title: t('navigation.playground'),
         url: "#",
-        icon: SquareTerminal,
+        icon: ChartNoAxesColumnIncreasing,
         isActive: true,
         items: [
           {
@@ -164,14 +151,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <Image src="/logo/logo.png" alt="Logo" width={130} height={132} />
+        {state === "collapsed" ? (
+          <Image src="/logo/favicon.png" alt="Logo" width={32} height={32} />
+        ) : (
+          <Image src="/logo/logo.png" alt="Logo" width={135} height={36} />
+        )}
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
         {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        {/* <NavUser user={data.user} /> */}
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

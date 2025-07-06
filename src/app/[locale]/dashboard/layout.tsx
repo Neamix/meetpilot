@@ -7,8 +7,9 @@ import {
 } from "@/components/ui/sidebar"
 import { RTLToggle } from "@/components/ui/rtl-toggle"
 import { useTranslations } from 'next-intl'
+import { DashboardLayoutInterface } from "@/app/interfaces/LayoutInterfaces"
 
-export default function AdminLayout ({ children }: { children: React.ReactNode })  {
+export default function AdminLayout ({ children }: DashboardLayoutInterface)  {
     const t = useTranslations('Dashboard.header')
     
     return (
