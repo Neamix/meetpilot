@@ -6,14 +6,20 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { RTLToggle } from "@/components/ui/rtl-toggle"
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { DashboardLayoutInterface } from "@/app/interfaces/LayoutInterfaces"
+import { cookies } from "next/headers"
 
-export default function AdminLayout ({ children }: DashboardLayoutInterface)  {
-    const t = useTranslations('Dashboard.header')
-    
+export default async function AdminLayout ({ children }: DashboardLayoutInterface)  {
+    const t = await getTranslations('Dashboard.header');
+    const cookieStore = await cookies();
+    const sidebarStateCookie = cookieStore.get('sidebar_state')?.value
+    const sidebarState = (sidebarStateCookie === "true"  || !sidebarStateCookie) ? true : false;
+
     return (
-        <SidebarProvider>
+        <SidebarProvider
+            defaultOpen={sidebarState}
+        >
             <AppSidebar />
             <SidebarInset>
                 <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">

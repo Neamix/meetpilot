@@ -9,6 +9,8 @@
  * - Easy to extend with custom rules
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // Types for validation system
 export interface ValidationRule {
   rule: string;
@@ -369,6 +371,18 @@ export class Validator {
  * Static helper function for quick validation
  */
 export function useValidateForm(
+  data: FormData, 
+  rules: ValidationRules, 
+  customMessages: { [key: string]: string } = {}
+): { isValid: boolean; errors: ValidationErrors } {
+  const validator = new Validator(data, rules, customMessages);
+  return validator.validate();
+}
+
+/**
+ * Simple validation function that auth-validation.ts expects
+ */
+export function validateForm(
   data: FormData, 
   rules: ValidationRules, 
   customMessages: { [key: string]: string } = {}

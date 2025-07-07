@@ -3,25 +3,18 @@
 import * as React from "react"
 import Image from "next/image"
 import {
-  AudioWaveform,
   BookOpen,
   ChartNoAxesColumnIncreasing ,
-  Command,
   Frame,
   Bot,
-  Handshake,
-  GalleryVerticalEnd,
   Map,
   PieChart,
   Settings2,
-  SquareTerminal,
 } from "lucide-react"
 import { useTranslations } from 'next-intl'
 
 import { NavMain } from "@/components/ui/nav-main"
-import { NavProjects } from "@/components/ui/nav-projects"
 import { NavUser } from "@/components/ui/nav-user"
-import { TeamSwitcher } from "@/components/ui/team-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -152,17 +145,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         {state === "collapsed" ? (
-          <Image src="/logo/favicon.png" alt="Logo" width={32} height={32} />
+          <Image src="/logo/favicon.png" className="mx-2 mt-2" alt="Logo" width={20} height={20} />
         ) : (
           <Image src="/logo/logo.png" alt="Logo" width={135} height={36} />
         )}
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain />
         {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>
-        {/* <NavUser user={data.user} /> */}
+        <NavUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

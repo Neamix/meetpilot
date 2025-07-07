@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
-import { useValidateForm, ValidationErrors } from "@/lib/validation";
-import { useAuthenticate } from "@/hooks/auth/useAuthenticate";
+import { validateForm, ValidationErrors } from "@/lib/validation";
 
 
 // Components
@@ -40,8 +39,8 @@ export default function SignComponent () {
         setIsLoading(true);
 
         try {
-            // Validate the form request
-            const result = useValidateForm(
+            // Validate the form request - Using regular validation instead of hook
+            const validator = validateForm(
                 {
                     email: email,
                     password: password
@@ -53,18 +52,25 @@ export default function SignComponent () {
             );
 
             // In case that there is validation error stop the request
-            if (!result.isValid) {
-                setErrors(result.errors)
+            if (!validator.isValid) {
+                setErrors(validator.errors)
                 setIsLoading(false);
                 return false;
             }        
 
-            // Login or return fail message
-            const authentication = await useAuthenticate({email, password});
-            if (authentication.status) return router.push('/');
-            else setErrors({
-                authentication:[ authentication.message]
-            })
+            // Login using auth client directly
+            const result = await authClient.signIn.email({
+                email: email,
+                password: password,
+            });
+
+            if (result.error) {
+                setErrors({
+                    authentication: [result.error.message || 'Authentication failed']
+                });
+            } else {
+                router.push('/');
+            }
 
         } catch (error) {
             setIsLoading(false);
@@ -75,6 +81,23 @@ export default function SignComponent () {
             setIsLoading(false);
         }
     }
+
+    // Social login handler
+    const handleSocialLogin = async (provider: 'google' | 'facebook') => {
+        try {
+            if (provider === 'google') {
+                await authClient.signIn.social({
+                    provider: 'google'
+                });
+            } else if (provider === 'facebook') {
+                await authClient.signIn.social({
+                    provider: 'facebook'
+                });
+            }
+        } catch (error) {
+            console.error('Social login error:', error);
+        }
+    };
 
     
 
@@ -89,12 +112,12 @@ export default function SignComponent () {
 
                         <div className="flex justify-between gap-2 mt-3">
 
-                            <Button className="pulse-on-click h-[35px] !w-[165px]" onClick={() => useSocailLogin({provider: 'google'})}>
+                            <Button className="pulse-on-click h-[35px] !w-[165px]" onClick={() => handleSocialLogin('google')}>
                                 <FaGoogle className="text-[10px] mr-2"/>
                                 <span className="text-[13px]">Google</span>
                             </Button>
 
-                            <Button className="pulse-on-click h-[35px] !w-[165px]" onClick={() => useSocailLogin({provider: 'facebook'})}>
+                            <Button className="pulse-on-click h-[35px] !w-[165px]" onClick={() => handleSocialLogin('facebook')}>
                                 <FaFacebook className="text-[10px] mr-2"/>
                                 <span className="text-[13px]">Facebook</span>
                             </Button>

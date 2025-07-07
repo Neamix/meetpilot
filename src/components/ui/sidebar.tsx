@@ -24,6 +24,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { getCookie } from 'cookies-next';
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -71,7 +72,15 @@ function SidebarProvider({
 
   // This is the internal state of the sidebar.
   // We use openProp and setOpenProp for control from outside the component.
-  const [_open, _setOpen] = React.useState(defaultOpen)
+  const [defaultOpenState, setDefaultOpenState] = React.useState(defaultOpen)
+  
+  React.useEffect(() => {
+    const value = getCookie('sidebar_state');
+    const newDefaultOpen = (value === "true" || !value) ? true : false;
+    setDefaultOpenState(newDefaultOpen);
+  }, [])
+
+  const [_open, _setOpen] = React.useState(defaultOpenState)
   const open = openProp ?? _open
   const setOpen = React.useCallback(
     (value: boolean | ((value: boolean) => boolean)) => {

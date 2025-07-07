@@ -3,6 +3,8 @@
  * This file demonstrates how to use the validation system in different scenarios
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useState, useCallback } from 'react';
 import { validateForm, ValidationRules, FormData, ValidationErrors } from './validation';
 

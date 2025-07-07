@@ -93,7 +93,7 @@ export function useLoginValidation() {
     try {
       await onSubmit(formData);
       return true;
-    } catch (error) {
+    } catch {
       setErrors({ general: ['An error occurred during login'] });
       return false;
     } finally {
@@ -151,7 +151,7 @@ export function useRegistrationValidation() {
     try {
       await onSubmit(formData);
       return true;
-    } catch (error) {
+    } catch {
       setErrors({ general: ['An error occurred during registration'] });
       return false;
     } finally {
